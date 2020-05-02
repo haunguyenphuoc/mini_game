@@ -1,0 +1,130 @@
+{
+  "LEVEL1": {
+    "models": [
+      {
+        "tag": "1",
+        "index": 0,
+        "imageUrl": "assets/images/chibi_pokemon_1.jpg"
+      },
+      {
+        "tag": "2",
+        "index": 1,
+        "imageUrl": "assets/images/chibi_pokemon_2.jpg"
+      },
+      {
+        "tag": "3",
+        "index": 2,
+        "imageUrl": "assets/images/chibi_pokemon_3.jpg"
+      },
+      {
+        "tag": "4",
+        "index": 3,
+        "imageUrl": "assets/images/chibi_pokemon_4.jpg"
+      },
+      {
+        "tag": "5",
+        "index": 4,
+        "imageUrl": "assets/images/chibi_pokemon_5.jpg"
+      },
+      {
+        "tag": "6",
+        "index": 5,
+        "imageUrl": "assets/images/chibi_pokemon_6.jpg"
+      },
+      {
+        "tag": "1",
+        "index": 6,
+        "imageUrl": "assets/images/chibi_pokemon_1.jpg"
+      },
+      {
+        "tag": "2",
+        "index": 7,
+        "imageUrl": "assets/images/chibi_pokemon_2.jpg"
+      },
+      {
+        "tag": "3",
+        "index": 8,
+        "imageUrl": "assets/images/chibi_pokemon_3.jpg"
+      },
+      {
+        "tag": "4",
+        "index": 9,
+        "imageUrl": "assets/images/chibi_pokemon_4.jpg"
+      },
+      {
+        "tag": "5",
+        "index": 10,
+        "imageUrl": "assets/images/chibi_pokemon_5.jpg"
+      },
+      {
+        "tag": "6",
+        "index": 11,
+        "imageUrl": "assets/images/chibi_pokemon_6.jpg"
+      }
+    ]
+  },
+  "LEVEL2": {
+    "models": [
+      {
+        "tag": "1",
+        "index": 0,
+        "imageUrl": "assets/images/chibi_pokemon_7.jpg"
+      },
+      {
+        "tag": "2",
+        "index": 1,
+        "imageUrl": "assets/images/chibi_pokemon_8.jpg"
+      },
+      {
+        "tag": "3",
+        "index": 2,
+        "imageUrl": "assets/images/chibi_pokemon_9.jpg"
+      },
+      {
+        "tag": "4",
+        "index": 3,
+        "imageUrl": "assets/images/chibi_pokemon_10.jpg"
+      },
+      {
+        "tag": "5",
+        "index": 4,
+        "imageUrl": "assets/images/chibi_pokemon_11.jpg"
+      },
+      {
+        "tag": "6",
+        "index": 5,
+        "imageUrl": "assets/images/chibi_pokemon_12.jpg"
+      },
+      {
+        "tag": "1",
+        "index": 6,
+        "imageUrl": "assets/images/chibi_pokemon_7.jpg"
+      },
+      {
+        "tag": "2",
+        "index": 7,
+        "imageUrl": "assets/images/chibi_pokemon_8.jpg"
+      },
+      {
+        "tag": "3",
+        "index": 8,
+        "imageUrl": "assets/images/chibi_pokemon_9.jpg"
+      },
+      {
+        "tag": "4",
+        "index": 9,
+        "imageUrl": "assets/images/chibi_pokemon_10.jpg"
+      },
+      {
+        "tag": "5",
+        "index": 10,
+        "imageUrl": "assets/images/chibi_pokemon_11.jpg"
+      },
+      {
+        "tag": "6",
+        "index": 11,
+        "imageUrl": "assets/images/chibi_pokemon_12.jpg"
+      }
+    ]
+  }
+}
