@@ -20,7 +20,7 @@ class CustomDialog extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // title
                   Text(
