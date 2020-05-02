@@ -6,6 +6,7 @@ import 'package:mini_game/models/card_model.dart';
 import 'package:mini_game/widgets/card_grid.dart';
 import 'package:mini_game/widgets/count_down.dart';
 import 'package:mini_game/widgets/custom_dialog.dart';
+import 'package:mini_game/widgets/pause_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,11 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   List<CardModel> openCards = [];
   int checkWin = 0;
   List<CardModel> listTemp = new List<CardModel>();
-  String level = "LEVEL1";
+  String levelGame;
   Timer timer;
   int seconds = 60;
   int countDown = 0;
   bool isPause = false;
+  int score = 0;
 
   void _startTimer() {
     const onsec = const Duration(seconds: 1);
@@ -28,7 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         if (countDown == seconds) {
           timer.cancel();
-          debugPrint('YOU CLOSE');
+          _showCustomDialog(
+              title: 'YOUR CLOSE',
+              level: levelGame,
+              score: score,
+              isClose: true);
         } else {
           countDown++;
         }
@@ -61,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {
           listTemp[openCards[0].index].setState = CardState.open;
           listTemp[openCards[1].index].setState = CardState.open;
+          score += 500;
           checkWin++;
         });
       }
@@ -68,39 +75,72 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     if (checkWin == listTemp.length / 2) {
-      _showCustomDialog();
+      _showCustomDialog(title: 'YOUR WIN', level: levelGame, score: score);
     }
   }
 
-  Future<Null> _showCustomDialog() async {
+  Future<Null> _showCustomDialog(
+      {String title, String level, int score = 0, bool isClose = false}) async {
     String result = await showDialog(
         context: context,
         barrierDismissible:
             false, // Prevent dialog from closing on outside touch
         builder: (BuildContext context) {
-          return CustomDialog();
+          return CustomDialog(
+            title: title,
+            isClose: isClose,
+            level: level,
+            score: score,
+          );
         });
     if (result == 'replay') {
       refresh();
-      setState(() {});
+      setState(() {
+        _startTimer();
+      });
     }
 
     if (result == 'next') {
       refresh();
+      //_startTimer();
       setState(() {
-        level = "LEVEL2";
+        levelGame = "Level 2";
+      });
+    }
+  }
+
+  Future<Null> _showPauseDialog({String level, int score = 0}) async {
+    String result = await showDialog(
+        context: context,
+        barrierDismissible:
+            false, // Prevent dialog from closing on outside touch
+        builder: (BuildContext context) {
+          return PauseDialog(
+            level: level,
+            score: score,
+          );
+        });
+    if (result == 'pause') {
+      setState(() {
+        isPause = !isPause;
+        _startTimer();
       });
     }
   }
 
   void refresh() {
     checkWin = 0;
+    countDown = 0;
+    isPause = false;
+    score = 0;
+    timer.cancel();
     openCards.clear();
     listTemp.clear();
   }
 
   @override
   void initState() {
+    levelGame = "Level 1";
     _startTimer();
     super.initState();
   }
@@ -117,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // final height = MediaQuery.of(context).size.height;
 
     return FutureBuilder<List<CardModel>>(
-      future: readJsonFile(level),
+      future: readJsonFile(levelGame),
       builder: (context, snapshot) {
         return Scaffold(
           backgroundColor: Colors.transparent,
@@ -159,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 SizedBox(width: 5.0),
                                 Text(
-                                  '0000',
+                                  '$score',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24.0,
@@ -170,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            'Level 1',
+                            '$levelGame',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 36.0,
@@ -179,16 +219,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              if (timer != null) {
-                                if (isPause) {
-                                  _startTimer();
-                                } else {
-                                  timer.cancel();
-                                }
-                              }
                               setState(() {
+                                timer.cancel();
                                 isPause = !isPause;
                               });
+
+                              _showPauseDialog(level: levelGame, score: score);
                             },
                             child: Container(
                               child: Icon(

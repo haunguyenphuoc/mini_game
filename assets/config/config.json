@@ -1,5 +1,5 @@
 {
-  "LEVEL1": {
+  "Level 1": {
     "models": [
       {
         "tag": "1",
@@ -63,7 +63,7 @@
       }
     ]
   },
-  "LEVEL2": {
+  "Level 2": {
     "models": [
       {
         "tag": "1",
